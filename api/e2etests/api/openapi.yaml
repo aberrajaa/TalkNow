@@ -1,0 +1,749 @@
+openapi: 3.0.3
+info:
+  description: |
+    This is a prototype of Talknow Project's front/back API.
+  title: Talknow API
+  version: 0.0.1
+servers:
+- url: http://localhost:8080/
+security:
+- CookieAuth: []
+tags:
+- description: User authentication.
+  name: authentication
+paths:
+  /user/signup:
+    post:
+      description: "L'utilisateur effectue une requête de type POST afin de fournir\
+        \ sous format JSON les informations suivantes, login, password, first name,\
+        \ second name, birthday date."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInscriptionDTO'
+        required: true
+      responses:
+        "200":
+          description: Inscription réussie
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security: []
+      summary: Permet à l'utilisateur de s'inscrire à l'application.
+      tags:
+      - authentication
+      x-content-type: application/json
+      x-accepts: application/json
+  /user/signin:
+    post:
+      description: "L'utilisateur effectue une requête de type POST afin de fournir\
+        \ son login et mot de passe, côté serveur on vérifie si le login et de mot\
+        \ de passe reçu est présent dans la base de données."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserDTO'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Authentification réussie.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security: []
+      summary: Permet à un utilisateur déjà inscrit de se connecter.
+      tags:
+      - authentication
+      x-content-type: application/json
+      x-accepts: application/json
+  /user/signout:
+    post:
+      description: "L'utilisateur n'a pas besoin d'envoyer de contenu dans le requê\
+        te POST, mais cette route lui permet ainsi de se déconnecter"
+      responses:
+        "200":
+          description: Déconnexion réussie.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security: []
+      summary: Permet à l'utilisateur de se déconnecter.
+      tags:
+      - authentication
+      x-accepts: application/json
+  /user/username:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Récupération du nom d'utilisateur réussie
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      summary: Obtenir le nom d'utilisateur
+      tags:
+      - authentication
+      x-accepts: application/json
+  /user/{login}:
+    delete:
+      description: "Permet à l'utilisateur actuellement connecté de supprimer son\
+        \ compte si il le souhaite, ceci le redirige vers la page de connexion avec\
+        \ son compte supprimé de la base de donnée."
+      parameters:
+      - description: User's login of the account to delete
+        explode: false
+        in: path
+        name: login
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Le profil de l'utilisateur a bien été supprimé.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security:
+      - CookieAuth: []
+      summary: Permet à l'utilisateur de supprimer son compte.
+      tags:
+      - settings
+      x-accepts: application/json
+  /profile/settings:
+    get:
+      description: "dans la page des paramètres, on a besoin de récupérer les donné\
+        es d'inscription de l'utilisateur afin qu'il puisse les voir et les modifier\
+        \ si il le souhaite."
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfoDTO'
+          description: Les informations de l'utilisateur ont bien été récupérées
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security:
+      - CookieAuth: []
+      summary: Obtenir les informations de l'utilisateur.
+      tags:
+      - settings
+      x-accepts: application/json
+    put:
+      description: L'utilisateur peut modifier certaines informations à propos de
+        son compte si il le souhaite.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateInfoDTO'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Les informations souhaitées ont bien été modifiées.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security:
+      - CookieAuth: []
+      summary: Modifier les informations de l'utilisateur.
+      tags:
+      - settings
+      x-content-type: application/json
+      x-accepts: application/json
+  /profile/contact:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContactInfoDTO'
+                type: array
+          description: Les contacts ont bien été récupérés.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security:
+      - CookieAuth: []
+      summary: Obtenir la liste de tous ses contacts
+      tags:
+      - contact
+      x-accepts: application/json
+    post:
+      description: "Si l'utilisateur souhaite discuter avec un contact qui n'existe\
+        \ pas encore dans sa base de données, il peut l'ajouter."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AjoutContactDTO'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContactInfoDTO'
+                type: array
+          description: Contact créé avec succès et on renvoie tous les champs de contacts
+            remplis avec un avatar par défaut et un login qu'on déduit de l'adresse
+            e-mail.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security:
+      - CookieAuth: []
+      summary: Permet à l'utilisateur d'ajouter un contact.
+      tags:
+      - contact
+      x-content-type: application/json
+      x-accepts: application/json
+  /profile/contact/{contactid}:
+    delete:
+      description: "Si l'utilisateur ne souhaite plus avoir un contact donné, il dispose\
+        \ d'une option pour le supprimer de sa base de données."
+      parameters:
+      - description: Contact's id
+        explode: false
+        in: path
+        name: contactid
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContactInfoDTO'
+                type: array
+          description: "Le contact a été supprimé avec succès, on retourne la liste\
+            \ des contacts mise à jour"
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security:
+      - CookieAuth: []
+      summary: Permet à l'utilisateur de supprimer un de ses contacts.
+      tags:
+      - contact
+      x-accepts: application/json
+    post:
+      description: "Si l'utilisateur souhaite discuter avec un utilisateur pour la\
+        \ première fois, en appuyant sur le bouton une conversation se crée au niveau\
+        \ du home."
+      parameters:
+      - description: Contact's id
+        explode: false
+        in: path
+        name: contactid
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: Conversation créée avec succès.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security:
+      - CookieAuth: []
+      summary: Permet à l'utilisateur de créer une conversation avec un contact.
+      tags:
+      - contact
+      x-accepts: application/json
+    put:
+      description: "Si l'utilisateur souhaite renommé un de ses contacts, il peut\
+        \ effectué ceci, ainsi que modifier l'avatar du contact."
+      parameters:
+      - description: Contact's id
+        explode: false
+        in: path
+        name: contactid
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateInfoDTO'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContactInfoDTO'
+                type: array
+          description: "Le contact a été modifié avec succès, on retourne la liste\
+            \ des contacts mise à jour"
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security:
+      - CookieAuth: []
+      summary: Permet à l'utilisateur de modifier des informations sur le contact
+        souhaité.
+      tags:
+      - contact
+      x-content-type: application/json
+      x-accepts: application/json
+  /profile/accueil:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserHomeInfoDTO'
+          description: L'avatar et le prénom ont bien été récupérés.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security:
+      - CookieAuth: []
+      summary: Permet de récupérer le prénom et l'avatar de l'utilisateur connecté.
+      tags:
+      - home
+      x-accepts: application/json
+  /profile/conversations:
+    get:
+      description: Permet à l'utilisateur de récupérer toutes ses conversations.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ConversationDTO'
+                type: array
+          description: Les conversations ont bien été récupérées.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security:
+      - CookieAuth: []
+      summary: Obtenir la liste des conversations.
+      tags:
+      - home
+      x-accepts: application/json
+  /profile/conversations/{conversationid}:
+    delete:
+      parameters:
+      - description: Id of the conversation to delete
+        explode: false
+        in: path
+        name: conversationid
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: La conversation a bien été supprimée.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security:
+      - CookieAuth: []
+      summary: Permet à l'utilisateur de supprimer une conversation.
+      tags:
+      - home
+      x-accepts: application/json
+  /message:
+    get:
+      description: "C'est ici ou on fait de l'attente active, on fait une requête\
+        \ Get pour récupérer de nouveaux messages."
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageDTO'
+          description: Le message a bien été récupéré.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security:
+      - CookieAuth: []
+      summary: Recevoir un nouveau message.
+      tags:
+      - message
+      x-accepts: application/json
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewMessageDTO'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MessageDTO'
+                type: array
+          description: "Le message a bien été envoyé, on retourne la liste des messages\
+            \ (màj)."
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security:
+      - CookieAuth: []
+      summary: Envoyer un message.
+      tags:
+      - message
+      x-content-type: application/json
+      x-accepts: application/json
+  /message/{conversationid}:
+    post:
+      parameters:
+      - description: Id of the conversation of the messages to retrieve
+        explode: false
+        in: path
+        name: conversationid
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewMessageDTO'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MessageDTO'
+                type: array
+          description: Ajout du message à la liste de messages avec le contact et
+            retour de la liste des messages
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security:
+      - CookieAuth: []
+      summary: Permet à l'utilisateur d'ajouter un message à une conversation.
+      tags:
+      - message
+      x-content-type: application/json
+      x-accepts: application/json
+  /message/toutsupprimer:
+    get:
+      responses:
+        "200":
+          description: Messages bien supprimés.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDTO'
+          description: Error
+      security:
+      - CookieAuth: []
+      summary: Supprimer tous les messages.
+      tags:
+      - message
+      x-accepts: application/json
+components:
+  schemas:
+    UserDTO:
+      example:
+        password: password
+        login: login
+      properties:
+        login:
+          type: string
+        password:
+          type: string
+      type: object
+    UserInscriptionDTO:
+      example:
+        secondname: secondname
+        date: 2000-01-23T04:56:07.000+00:00
+        password: password
+        firstname: firstname
+        address: address
+        login: login
+      properties:
+        login:
+          type: string
+        password:
+          type: string
+        firstname:
+          type: string
+        secondname:
+          type: string
+        address:
+          type: string
+        date:
+          format: date-time
+          type: string
+      type: object
+    UserInfoDTO:
+      example:
+        firstName: firstName
+        password: password
+        birthdayDate: 2000-01-23T04:56:07.000+00:00
+        adress: adress
+        avatar: avatar
+        login: login
+        secondName: secondName
+      properties:
+        login:
+          type: string
+        password:
+          type: string
+        firstName:
+          type: string
+        secondName:
+          type: string
+        adress:
+          type: string
+        birthdayDate:
+          format: date-time
+          type: string
+        avatar:
+          type: string
+      type: object
+    UpdateInfoDTO:
+      example:
+        type: type
+        value: value
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+      type: object
+    UserHomeInfoDTO:
+      example:
+        firstname: firstname
+        avatar: avatar
+      properties:
+        firstname:
+          type: string
+        avatar:
+          type: string
+      type: object
+    ContactInfoDTO:
+      example:
+        firstname: firstname
+        avatar: avatar
+        id: 0
+        pseudo: pseudo
+        email: email
+        lastname: lastname
+      properties:
+        firstname:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+        pseudo:
+          type: string
+        avatar:
+          type: string
+        id:
+          format: int64
+          type: integer
+      type: object
+    AjoutContactDTO:
+      example:
+        email: email
+      properties:
+        email:
+          type: string
+      type: object
+    ConversationDTO:
+      example:
+        contactAvatar: contactAvatar
+        lastMessageDate: 2000-01-23T04:56:07.000+00:00
+        contactPseudo: contactPseudo
+        myMessages:
+        - from: from
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          to: to
+          type: type
+          body: body
+          timestamp: 6
+        - from: from
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          to: to
+          type: type
+          body: body
+          timestamp: 6
+        lastMessage: lastMessage
+        id: 0
+      properties:
+        id:
+          format: int64
+          type: integer
+        contactPseudo:
+          type: string
+        contactAvatar:
+          type: string
+        lastMessage:
+          type: string
+        lastMessageDate:
+          format: date-time
+          type: string
+        myMessages:
+          items:
+            $ref: '#/components/schemas/MessageDTO'
+          type: array
+      type: object
+    MessageDTO:
+      example:
+        from: from
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        to: to
+        type: type
+        body: body
+        timestamp: 6
+      properties:
+        id:
+          format: uuid
+          type: string
+        timestamp:
+          format: int64
+          type: integer
+        from:
+          type: string
+        to:
+          type: string
+        type:
+          type: string
+        body:
+          type: string
+      type: object
+    NewMessageDTO:
+      example:
+        to: to
+        type: type
+        body: body
+      properties:
+        to:
+          type: string
+        type:
+          type: string
+        body:
+          type: string
+      type: object
+    ErrorDTO:
+      properties:
+        timestamp:
+          type: string
+        status:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+        path:
+          type: string
+      type: object
+  securitySchemes:
+    CookieAuth:
+      description: Use a session cookie to authenticate (see /login).
+      in: cookie
+      name: JSESSIONID
+      type: apiKey
+x-samples-languages:
+- curl
+- javascript
+- node
+- java
+- python
+- php
+

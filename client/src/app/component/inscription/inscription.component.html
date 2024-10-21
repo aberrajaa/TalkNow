@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<head>
+  <link rel="stylesheet" href="inscription.component.css" />
+</head>
+
+<div class="macbook-air">
+  <img
+    src="../../../assets/true_background.png"
+    class="background-image"
+    *ngIf="!isPhonePortrait"
+  />
+  <img
+    src="../../../assets/true_background_phone.png"
+    class="background-image-phone"
+    *ngIf="isPhonePortrait"
+  />
+
+  <!-- Pour le téléphone et la tablette -->
+  <div class="phone-tablet-layout" *ngIf="isPhonePortrait">
+    <div class="rectangle">
+      <p class="titre">Créez votre compte !</p>
+      <div class="line"></div>
+      <p class="titre-prenom">Prénom</p>
+      <input
+        type="text"
+        placeholder="Entrez votre prénom"
+        class="prenom"
+        [(ngModel)]="user.firstname"
+        (ngModelChange)="updateLogin(); updateEmail()"
+      />
+      <p class="titre-nom">Nom de famille</p>
+      <input
+        type="text"
+        placeholder="Entrez votre nom de famille"
+        class="nom-de-famille"
+        [(ngModel)]="user.secondname"
+        (ngModelChange)="updateLogin(); updateEmail()"
+      />
+      <p class="titre-email">Adresse e-mail</p>
+      <input
+        type="text"
+        placeholder="Entrez votre adresse e-mail"
+        class="email"
+        [(ngModel)]="user.address"
+        disabled
+      />
+      <p class="titre-date">Date de naissance</p>
+      <input
+        type="date"
+        id="dateInput"
+        name="dateInput"
+        class="date"
+        [(ngModel)]="user.date"
+      />
+      <p class="titre-nom-utilisateur">Nom d'utilisateur</p>
+      <input
+        type="text"
+        placeholder="Entrez votre nom d'utilisateur"
+        class="nom-utilisateur"
+        [(ngModel)]="user.login"
+        disabled
+      />
+      <p class="titre-mot-de-passe">Mot de passe</p>
+      <input
+        type="password"
+        placeholder="Entrez votre mot de passe"
+        class="mot-de-passe"
+        [(ngModel)]="user.password"
+      />
+      <p class="titre-confirmation-mdp">Confirmez votre mot de passe</p>
+      <input
+        type="password"
+        placeholder="Confirmez votre mot de passe"
+        class="confirmation"
+        [(ngModel)]="passwordConfirmation"
+      />
+      <div class="erreur">{{ errormessage }}</div>
+      <button mat-raised-button class="bouton-inscription" (click)="signup()">
+        <p class="text-bouton-inscription">S'inscrire</p>
+      </button>
+      <div class="text-deja-inscrit">
+        <a href="/" style="text-decoration: none; color: #ffffff"
+          >Déjà inscrit ?</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- Pour l'ordinateur -->
+  <div class="desktop-layout" *ngIf="!isPhonePortrait">
+    <img class="image" src="../../../assets/logo-white.png" />
+    <div class="rectangle">
+      <p class="titre">Créez votre compte !</p>
+      <div class="line"></div>
+      <p class="titre-prenom">Prénom</p>
+      <input
+        type="text"
+        placeholder="Entrez votre prénom"
+        class="prenom"
+        [(ngModel)]="user.firstname"
+        (ngModelChange)="updateLogin(); updateEmail()"
+      />
+      <p class="titre-nom">Nom de famille</p>
+      <input
+        type="text"
+        placeholder="Entrez votre nom de famille"
+        class="nom-de-famille"
+        [(ngModel)]="user.secondname"
+        (ngModelChange)="updateLogin(); updateEmail()"
+      />
+      <p class="titre-email">Adresse e-mail</p>
+      <input
+        type="text"
+        placeholder=""
+        class="email"
+        [(ngModel)]="user.address"
+        disabled
+      />
+      <p class="titre-date">Date de naissance</p>
+      <input
+        type="date"
+        id="dateInput"
+        name="dateInput"
+        class="date"
+        [(ngModel)]="user.date"
+      />
+      <p class="titre-nom-utilisateur">Nom d'utilisateur</p>
+      <input
+        type="text"
+        placeholder=""
+        class="nom-utilisateur"
+        [(ngModel)]="user.login"
+        disabled
+      />
+      <p class="titre-mot-de-passe">Mot de passe</p>
+      <input
+        type="password"
+        placeholder="Entrez votre mot de passe"
+        class="mot-de-passe"
+        [(ngModel)]="user.password"
+      />
+      <p class="titre-confirmation-mdp">Confirmez votre mot de passe</p>
+      <input
+        type="password"
+        placeholder="Confirmez votre mot de passe"
+        class="confirmation"
+        [(ngModel)]="passwordConfirmation"
+      />
+      <div class="erreur">{{ errormessage }}</div>
+      <button mat-raised-button class="bouton-inscription" (click)="signup()">
+        <p class="text-bouton-inscription">S'inscrire</p>
+      </button>
+      <div class="text-deja-inscrit">
+        <a href="/" style="text-decoration: none; color: #ffffff"
+          >Déjà inscrit ?</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

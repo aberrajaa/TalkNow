@@ -1,0 +1,152 @@
+.image_connexion {
+  position: absolute;
+  top: 25%;
+  left: 5%;
+  height: 53%;
+  width: 38%;
+}
+
+.rounded-rectangle {
+  position: absolute;
+  top: 17%;
+  left: 55%;
+  width: 38%;
+  height: 63%;
+  background-color: #ffffff;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45%;
+  height: 30%;
+  z-index: 1;
+}
+
+.nouveau-rounded-rectangle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 55%;
+  top: 83%;
+  width: 38%;
+  height: 10%;
+  background-color: #ffffff;
+  border-radius: 20px;
+  z-index: 1;
+}
+.texte-noir {
+  color: black;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1.5vh;
+  font-size: 1.5vw;
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+  left: 7%;
+}
+
+.email {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  position: absolute;
+  top: 47%;
+  left: 10%;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: #d9d9d9;
+}
+
+.mot-de-passe {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  position: absolute;
+  top: 68%;
+  left: 10%;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: #d9d9d9;
+}
+
+.input-email {
+  color: black;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1.5vh;
+  font-size: 1.5vw;
+  position: absolute;
+  left: 10%;
+  top: 43%;
+}
+
+.input-motdepasse {
+  color: black;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1.5vh;
+  font-size: 1.5vw;
+  position: absolute;
+  left: 10%;
+  top: 64%;
+}
+
+.boutton-connexion {
+  background-color: #0b0575;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  padding: 15px 80px;
+  cursor: pointer;
+  position: absolute;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1.5vh;
+  font-size: 1.5vw;
+
+  text-align: center;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65%;
+  height: 12%;
+}
+
+.lien-vers-inscription {
+  position: absolute;
+  font-style: italic;
+  font-size: 1.25vh;
+  font-size: 1.25vw;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 75%;
+}
+
+.connexion-component {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../../assets/true_background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.erreur {
+  color: red;
+  position: absolute;
+  font-size: 1.1vh;
+  font-size: 1.1vw;
+  top: 78.5%;
+  left: 14%;
+}

@@ -1,0 +1,27 @@
+.message-block {
+  background-color: #843eda;
+  border-radius: 15px;
+  padding: 10px;
+  max-width: 29%;
+  margin-bottom: 1%;
+  margin-top: 2%;
+  margin-left: 65%;
+}
+
+.message-content {
+  color: #fff;
+}
+
+.external-message-block {
+  background-color: #27c2b7;
+  border-radius: 15px;
+  padding: 10px;
+  max-width: 29%;
+  margin-bottom: 1%;
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.external-message-content {
+  color: #fff;
+}

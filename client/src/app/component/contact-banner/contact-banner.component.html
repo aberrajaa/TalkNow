@@ -1,0 +1,8 @@
+<div class="contact-details" *ngIf="selectedConversation">
+  <img
+    [src]="selectedConversation.contactAvatar"
+    alt="Photo de profil"
+    class="selected-contact-picture"
+  />
+  <h2 class="name">{{ selectedConversation.contactPseudo }}</h2>
+</div>

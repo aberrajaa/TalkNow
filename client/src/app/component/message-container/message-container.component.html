@@ -1,0 +1,25 @@
+<div class="contenant"></div>
+<div class="message-list-container">
+  <div class="message-list" #messageContainer>
+    <app-message-block
+      *ngFor="let message of messages"
+      [message]="message.body"
+      [from]="message.from"
+      class="right"
+    ></app-message-block>
+  </div>
+</div>
+<div class="other-contenant"></div>
+<div class="message-input-container">
+  <div class="message-input">
+    <input
+      type="text"
+      [(ngModel)]="newMessage"
+      placeholder="Saisissez votre message"
+      (keydown.enter)="sendMessage(newMessage)"
+    />
+    <button (click)="sendMessage(newMessage)">
+      <mat-icon>send</mat-icon>
+    </button>
+  </div>
+</div>

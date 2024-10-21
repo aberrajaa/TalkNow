@@ -1,0 +1,11 @@
+.contact-barre {
+  height: 60%;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 24%;
+  padding: 10px;
+  margin-left: 10%;
+  position: absolute;
+  top: 32%;
+}

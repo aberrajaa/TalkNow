@@ -1,0 +1,129 @@
+<div class="background">
+  <app-navbar></app-navbar>
+  <div class="background">
+    <h2 class="titre">Paramètres du compte</h2>
+    <div class="user-info">
+      <div class="form-group">
+        <ng-container *ngIf="!editAvatar; else editAvatarTemplate">
+          <img
+            *ngIf="usertest"
+            [src]="usertest.avatar"
+            alt="Avatar"
+            class="image"
+          />
+          <button (click)="editAvatar = true" class="edit-button-avatar">
+            Éditer l'avatar
+          </button>
+        </ng-container>
+        <ng-template #editAvatarTemplate>
+          <div class="overlay" (click)="editAvatar = false"></div>
+          <div class="avatar-modal">
+            <div class="avatar-list">
+              <div
+                *ngFor="let avatar of avatarList"
+                class="avatar-item"
+                (click)="updateAvatar(avatar); updatePutAvatar(avatar)"
+              >
+                <img [src]="avatar" alt="Avatar" class="avatar-picture" />
+              </div>
+            </div>
+            <button (click)="editAvatar = false">Annuler</button>
+          </div>
+        </ng-template>
+      </div>
+      <!-- Prénom -->
+      <div class="form-group">
+        <label for="firstName" class="white-text">Prénom :</label>
+        <ng-container *ngIf="!editFirstName; else editFirstNameTemplate">
+          <p class="other-text" *ngIf="usertest">{{ usertest.firstName }}</p>
+          <button (click)="editFirstName = true" class="edit-button">
+            Éditer
+          </button>
+        </ng-container>
+        <ng-template #editFirstNameTemplate>
+          <div class="editing-input">
+            <input [(ngModel)]="usertest.firstName" />
+            <button
+              (click)="
+                updateFirstname(usertest.firstName); editFirstName = false
+              "
+              class="enregistrer"
+            >
+              Enregistrer
+            </button>
+          </div>
+        </ng-template>
+      </div>
+      <div class="form-group">
+        <label for="lastName" class="white-text">Nom :</label>
+        <ng-container *ngIf="!editLastName; else editLastNameTemplate">
+          <p class="other-text" *ngIf="usertest">{{ usertest.secondName }}</p>
+          <button (click)="editLastName = true" class="edit-button">
+            Éditer
+          </button>
+        </ng-container>
+        <ng-template #editLastNameTemplate>
+          <div class="editing-input">
+            <input [(ngModel)]="usertest.secondName" />
+            <button
+              (click)="
+                updateLastname(usertest.secondName); editLastName = false
+              "
+              class="enregistrer"
+            >
+              Enregistrer
+            </button>
+          </div>
+        </ng-template>
+      </div>
+      <!-- Date de naissance -->
+      <div class="form-group">
+        <label for="birthDate" class="white-text">Date de naissance :</label>
+        <p class="special-text" *ngIf="usertest">{{ usertest.birthdayDate }}</p>
+      </div>
+      <div class="form-group">
+        <label for="username" class="white-text">Nom d'utilisateur :</label>
+        <p class="special-text" *ngIf="usertest">{{ usertest.login }}</p>
+      </div>
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email" class="white-text">Email :</label>
+        <p class="special-text" *ngIf="usertest">{{ usertest.adress }}</p>
+      </div>
+      <!-- Mot de passe -->
+      <div class="form-group">
+        <label for="password" class="white-text">Mot de passe :</label>
+        <ng-container *ngIf="!editPassword; else editPasswordTemplate">
+          <p class="other-text">{{ showPassword ? motdepasse : "********" }}</p>
+          <button (click)="editPassword = true" class="edit-button">
+            Éditer
+          </button>
+          <button
+            (click)="showPassword = !showPassword"
+            class="edit-button-afficher"
+          >
+            {{ showPassword ? "Masquer" : "Afficher" }}
+          </button>
+        </ng-container>
+        <ng-template #editPasswordTemplate>
+          <div class="editing-input">
+            <input type="password" [(ngModel)]="motdepasse" />
+            <button
+              (click)="updatePassword(motdepasse); editPassword = false"
+              class="enregistrer"
+            >
+              Enregistrer
+            </button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <div class="cubes">
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div>
+    <div class="cube"></div>
+  </div>
+</div>

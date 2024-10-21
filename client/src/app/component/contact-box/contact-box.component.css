@@ -1,0 +1,92 @@
+.contact-box {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 4%;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+.has-notifications {
+  border: 5px solid #27c2b7;
+}
+
+.profile-picture {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact-info {
+  flex-grow: 1;
+}
+
+.contact-name {
+  margin-top: 3%;
+  font-weight: lighter;
+  color: #ffffff;
+}
+
+.input-search {
+  width: 95%;
+  margin-left: 1.5%;
+  border-radius: 30px;
+  margin-bottom: 5%;
+}
+
+.last-message {
+  color: #dddddd;
+  font-weight: lighter;
+  font-style: italic;
+}
+
+.ellipsis-text {
+  color: #dddddd;
+  font-weight: lighter;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.contact-details {
+  background-color: #fff;
+  padding: 16px;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.selected-contact-picture {
+  max-width: 100px;
+  margin-top: 10px;
+}
+
+.contact-barre {
+  height: 60%;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 24%;
+  padding: 10px;
+  margin-left: 10%;
+  position: absolute;
+  top: 32%;
+}
+
+.last-message-date {
+  color: #dddddd;
+  font-weight: lighter;
+  font-style: italic;
+  margin-left: 60%;
+}

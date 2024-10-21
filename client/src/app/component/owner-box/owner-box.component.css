@@ -1,0 +1,36 @@
+.owner-box {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25.5%;
+  height: 12%;
+  position: absolute;
+  top: 16%;
+  left: 10%;
+}
+
+.profile-picture img {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  left: 7%;
+  top: 15%;
+}
+
+.welcome {
+  font-size: 22px;
+  font-weight: lighter;
+  position: absolute;
+  top: 37%;
+  left: 30%;
+  color: #ffffff;
+}
+
+.filter-input input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

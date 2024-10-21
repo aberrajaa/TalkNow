@@ -1,0 +1,235 @@
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .background {
+    background: linear-gradient(132deg, #FC415A, #591BC5, #212335);
+    background-size: 400% 400%;
+    animation: Gradient 20s ease infinite;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    padding:0;
+    margin:0px;
+  }
+  .cube {
+    position: absolute;
+    top: 80vh;
+    left: 45vw;
+    width: 10px;
+    height: 10px;
+    border: solid 1px #D7D4E4;
+    transform-origin: top left;
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);
+    animation: cube 12s ease-in forwards infinite;
+  }
+
+  .cube:nth-child(4) {
+    animation-delay: 6s;
+    left: 90vw;
+    top: 25vh;
+    z-index: 0;
+  }
+  .cube:nth-child(5) {
+    animation-delay: 8s;
+    left: 10vw;
+    top: 85vh;
+    z-index: 0;
+  }
+  .cube:nth-child(6) {
+    animation-delay: 10s;
+    left: 50vw;
+    top: 10vh;
+    z-index: 0;
+  }
+  
+  @keyframes Gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes cube {
+    from {
+      transform: scale(0) rotate(0deg) translate(-50%, -50%);
+      opacity: 1;
+    }
+    to {
+      transform: scale(20) rotate(960deg) translate(-50%, -50%);
+      opacity: 0;
+    }
+  }
+
+.image{
+    height: 80px;
+    width: 80px;
+    position: relative;
+    left: 6%;
+    top:12%
+}
+
+.user-info{
+    border: 1px solid #ccc;
+    margin-left: auto;
+    margin-right: auto;
+    height: 70%;
+    width: 30%;
+    border-radius: 20px;
+    margin-top: 8%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* CSS pour l'effet de superposition lors de l'édition de l'avatar */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    z-index: 900; /* Place l'overlay au-dessus du contenu principal */
+  }
+  
+  /* CSS pour la fenêtre modale d'édition de l'avatar */
+  .avatar-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centre la fenêtre modale */
+    background-color: #FFFFFF; /* Couleur de fond de la fenêtre modale */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Ombre pour la fenêtre modale */
+    text-align: center;
+    z-index: 1000; /* Place la fenêtre modale au-dessus de l'overlay */
+  }
+  
+  /* Style pour la liste des avatars dans la fenêtre modale */
+  .avatar-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .titre{
+    font-size: 1.75vh;
+    font-size: 1.75vw;;
+    color:#FFFFFF;
+    font-weight: lighter;
+    position: absolute;
+    left: 41%;
+    top: 8.5%;
+  }
+  
+  .avatar-item {
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  .avatar-item img {
+    max-width: 100px;
+    max-height: 100px;
+    border: 2px solid transparent;
+  }
+  
+  .avatar-item:hover img {
+    border: 2px solid #007BFF;
+  }
+  
+  
+.white-text {
+    color: white;
+    position: relative;
+    top:8%;
+    left: 4%;
+    font-size: 18px;
+    font-weight: lighter;
+  }
+
+  .other-text{
+    text-align: center;
+    position: relative;
+    top:18%;
+    font-size: 18px;
+    color:#FFFFFF;
+    font-weight: lighter;
+
+  }
+  
+  .edit-button {
+    background-color: #FFFFFF; 
+    color: black; 
+    border: none; /* Supprimez la bordure */
+    padding: 5px 10px; /* Marge interne du bouton */
+    cursor: pointer; /* Curseur de type main */
+    border-radius: 20px;
+    display: block;
+    margin : auto;
+    margin-top: 10%;
+  }
+
+  .edit-button-avatar{
+    background-color: #FFFFFF; /* Couleur du bouton */
+    color: black; /* Couleur du texte */
+    border: none; /* Supprimez la bordure */
+    padding: 5px 10px; /* Marge interne du bouton */
+    cursor: pointer; /* Curseur de type main */
+    border-radius: 20px;
+    display: block;
+    margin : auto;
+    position: relative;
+    top: -20%;
+    transform: translateY(-50%);
+  }
+  
+
+.form-group{
+    border: 1px solid #ccc;
+    margin-left: auto;
+    margin-right: auto;
+    height: 20%;
+    width: 90%;
+    border-radius: 20px;
+    margin-top: 4%;
+}
+
+.editing-input{
+    border-radius: 20px;
+    position: relative;
+    top:18%;
+    left:18%
+}
+
+.special-text{
+    text-align: center;
+    position: relative;
+    top:23%;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+.edit-button-afficher{
+    background-color: #FFFFFF; /* Couleur du bouton */
+    color: black; /* Couleur du texte */
+    border: none; /* Supprimez la bordure */
+    padding: 5px 10px; /* Marge interne du bouton */
+    cursor: pointer; /* Curseur de type main */
+    border-radius: 20px;
+    position: relative;
+    top:-57%;
+    left: 65%;
+}
+
+.enregistrer{
+    border-radius: 20px;
+    background-color: #FFFFFF;
+}

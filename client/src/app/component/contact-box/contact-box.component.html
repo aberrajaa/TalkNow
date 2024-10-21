@@ -1,0 +1,43 @@
+<div class="contact-barre">
+  <div class="contact-list">
+    <div class="contact-list">
+      <input
+        [(ngModel)]="searchValue"
+        placeholder="Rechercher un contact"
+        class="input-search"
+      />
+      <div
+        *ngFor="let conversation of filterConversations()"
+        class="contact-box"
+        (click)="selectConversation(conversation)"
+        [ngClass]="{
+          'has-notifications': unreadConversations.has(
+            conversation.contactPseudo
+          )
+        }"
+      >
+        <img
+          [src]="conversation.contactAvatar"
+          alt="Photo de profil"
+          class="profile-picture"
+        />
+        <div class="contact-info">
+          <div
+            *ngIf="unreadConversations.has(conversation.contactPseudo)"
+            class="notification"
+          ></div>
+          <div class="contact-name">{{ conversation.contactPseudo }}</div>
+          <div class="ellipsis-text">{{ conversation.lastMessage }}</div>
+          <div class="last-message-date">
+            {{ getRelativeDate(conversation.lastMessageDate) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-contact-banner
+  [selectedConversation]="selectedConversation"
+  class="banner"
+></app-contact-banner>

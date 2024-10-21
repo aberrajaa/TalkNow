@@ -1,0 +1,117 @@
+<div class="background">
+  <app-navbar></app-navbar>
+  <p class="titre">Gérez vos contacts</p>
+  <mat-icon class="icon-add" (click)="toggleAddContact()">add</mat-icon>
+  <div *ngIf="addingContact" class="add-contact-form">
+    <div class="rectangle-ajout">
+      <input
+        type="text"
+        [(ngModel)]="myemail"
+        placeholder="nom_utilisateur@domaine"
+        class="placeholderemail"
+      />
+      <button
+        type="submit"
+        (click)="ajouterContact(myemail)"
+        class="add-button"
+      >
+        Ajouter
+      </button>
+      <button (click)="cancelAddContact()" class="add-button">Annuler</button>
+    </div>
+  </div>
+  <p class="error">{{ errormessage }}</p>
+  <div class="contacts-info">
+    <div *ngFor="let contact of contacts" class="contact-box">
+      <div class="contact-content">
+        <img
+          [src]="contact.avatar"
+          alt="Photo de profil"
+          class="profile-picture"
+        />
+        <button
+          *ngIf="!contact.editMode"
+          (click)="toggleEdit(contact)"
+          class="avatar-edit-button"
+        >
+          Éditer l'avatar
+        </button>
+        <ng-container *ngIf="contact.editMode">
+          <div class="avatar-modal">
+            <div class="avatar-list">
+              <div
+                *ngFor="let avatar of avatarList"
+                class="avatar-item"
+                (click)="updateAvatar(avatar, contact)"
+              >
+                <img [src]="avatar" alt="Avatar" class="avatar-picture" />
+              </div>
+            </div>
+            <button (click)="contact.editMode = false">Annuler</button>
+          </div>
+        </ng-container>
+        <div class="contact-name">
+          {{ contact.firstname }}{{ contact.lastname }}
+        </div>
+        <div *ngIf="editingContact === contact" class="edit-contact-modal">
+          <div class="edit-contact-modal-content">
+            <div class="edit-contact-form">
+              <input
+                [(ngModel)]="contact.firstname"
+                class="edit-contact-input"
+                placeholder="Modifier le prenom"
+              />
+              <button
+                (click)="updateContactFirstName(contact.firstname, contact)"
+                class="edit-contact-save-button"
+              >
+                Enregistrer
+              </button>
+              <input
+                [(ngModel)]="contact.lastname"
+                class="edit-contact-input"
+                placeholder="Modifier le nom"
+              />
+              <button
+                (click)="updateContactLastName(contact.lastname, contact)"
+                class="edit-contact-save-button"
+              >
+                Enregistrer
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="icones">
+          <mat-icon class="icon" (click)="creerConversation(contact)"
+            >add</mat-icon
+          >
+          <mat-icon class="icon" (click)="getContactInfo(contact)"
+            >info</mat-icon
+          >
+          <mat-icon class="icon" (click)="editContactName(contact)"
+            >edit</mat-icon
+          >
+          <mat-icon class="icon" (click)="supprimerContact(contact)"
+            >delete</mat-icon
+          >
+        </div>
+      </div>
+    </div>
+    <div *ngIf="selectedContact" class="info-rectangle">
+      <div class="info-content">
+        <h2>Nom : {{ selectedContact.lastname }}</h2>
+        <h2>Prénom : {{ selectedContact.firstname }}</h2>
+        <h2>Email : {{ selectedContact.email }}</h2>
+        <h2>Pseudo : {{ selectedContact.pseudo }}</h2>
+        <button (click)="closeInfo()">Fermer</button>
+      </div>
+    </div>
+    <div class="cubes">
+      <div class="cube"></div>
+      <div class="cube"></div>
+      <div class="cube"></div>
+      <div class="cube"></div>
+      <div class="cube"></div>
+    </div>
+  </div>
+</div>

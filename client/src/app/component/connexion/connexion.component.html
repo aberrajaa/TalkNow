@@ -1,0 +1,27 @@
+<img src="assets/true_background.png" class="connexion-component" />
+<img src="assets/image_connexion.png" class="image_connexion" />
+<div class="nouveau-rounded-rectangle">
+  <p class="texte-noir">Vous n'avez pas de compte ?</p>
+  <a href="/inscription" class="lien-vers-inscription"
+    >Inscrivez-vous maintenant</a
+  >
+</div>
+<div class="rounded-rectangle">
+  <img src="assets/logo.png" class="logo" />
+  <input
+    type="text"
+    placeholder="Entrez votre e-mail"
+    class="email"
+    [(ngModel)]="user.login"
+  />
+  <input
+    type="password"
+    placeholder="Entrez votre mot de passe"
+    class="mot-de-passe"
+    [(ngModel)]="user.password"
+  />
+  <p class="input-email">Nom d'utilisateur</p>
+  <p class="input-motdepasse">Mot de passe</p>
+  <div class="erreur">{{ errormessage }}</div>
+  <button class="boutton-connexion" (click)="login()">Se connecter</button>
+</div>

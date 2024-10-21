@@ -1,0 +1,19 @@
+<div #conversation class="conversation">
+  <div *ngIf="from && isFromEqualToUserLogged(from, usertest?.login)">
+    <div class="message-block">
+      <div class="message-content">
+        {{ message }}
+      </div>
+    </div>
+  </div>
+  <div
+    *ngIf="from && !isFromEqualToUserLogged(from, usertest?.login)"
+    class="external-content"
+  >
+    <div class="external-message-block">
+      <div class="external-message-content">
+        {{ message }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,270 @@
+body {
+  font-family: "Josefin Sans", sans-serif;
+  box-sizing: border-box;
+}
+
+.background {
+  background: linear-gradient(132deg, #fc415a, #591bc5, #212335);
+  background-size: 400% 400%;
+  animation: Gradient 20s ease infinite;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0px;
+}
+.cube {
+  position: absolute;
+  top: 80vh;
+  left: 45vw;
+  width: 10px;
+  height: 10px;
+  border: solid 1px #d7d4e4;
+  transform-origin: top left;
+  transform: scale(0) rotate(0deg) translate(-50%, -50%);
+  animation: cube 12s ease-in forwards infinite;
+}
+
+.cube:nth-child(4) {
+  animation-delay: 6s;
+  left: 90vw;
+  top: 25vh;
+  z-index: 0;
+}
+.cube:nth-child(5) {
+  animation-delay: 8s;
+  left: 10vw;
+  top: 85vh;
+  z-index: 0;
+}
+.cube:nth-child(6) {
+  animation-delay: 10s;
+  left: 50vw;
+  top: 10vh;
+  z-index: 0;
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes cube {
+  from {
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);
+    opacity: 1;
+  }
+  to {
+    transform: scale(20) rotate(960deg) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
+.titre {
+  font-size: 28px;
+  color: #ffffff;
+  position: absolute;
+  top: 19%;
+  left: 21%;
+  font-weight: lighter;
+}
+
+.contacts-info {
+  border: 1px solid #ccc;
+  width: 60%;
+  height: 60%;
+  overflow-y: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8%;
+  border-radius: 25px;
+  overflow-x: hidden;
+}
+
+.contact-box {
+  border: 1px solid #ccc;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 20%;
+  border-radius: 25px;
+  margin-bottom: 2%;
+  margin-top: 1%;
+}
+
+.profile-picture {
+  height: 60px;
+  width: 60px;
+}
+
+.mat-icon {
+  font-size: 24px;
+  margin-right: 20px;
+  color: #ffffff;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  margin-left: 50%;
+}
+.contact-name {
+  font-size: 24px;
+  color: #ffffff;
+  position: relative;
+  margin-right: 20%;
+}
+
+.icon-add {
+  font-size: 30px;
+  position: absolute;
+  left: 76%;
+  top: 19%;
+}
+
+.contact-content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: space-between;
+  padding: 0 2%;
+}
+
+.info-rectangle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 900;
+}
+
+.info-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.info-content button {
+  margin-top: 10px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+}
+
+.avatar-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  z-index: 1000;
+}
+
+.avatar-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.avatar-edit-button {
+  border-radius: 20px;
+  background-color: #ffffff;
+}
+
+.avatar-picture {
+  height: 90px;
+  width: 90px;
+}
+
+.rectangle-ajout {
+  position: absolute;
+  top: 18%;
+  left: 58%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  padding: 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  z-index: 1000;
+}
+
+.add-button {
+  border-radius: 20px;
+  background-color: #ffffff;
+}
+
+.edit-contact-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-contact-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 80%;
+  text-align: center;
+}
+
+.edit-contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-contact-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.edit-contact-save-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 5%;
+}
+
+.placeholderemail {
+  border-radius: 10px;
+}

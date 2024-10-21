@@ -1,0 +1,339 @@
+.macbook-air {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.background-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+
+.background-image-phone {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+
+.phone-tablet-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.desktop-layout {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.image {
+  position: relative;
+  top: 34%;
+  margin-top: 18%;
+  left: 15%;
+  height: 30%;
+}
+
+.rectangle {
+  width: 52vh;
+  height: 80%;
+  margin-top: 3%;
+  top: 10%;
+  left: 27%;
+  background-image: linear-gradient(
+    180deg,
+    #8a4efe 0,
+    #ad68ff 12.5%,
+    #c781fe 25%,
+    #e3a9fe 37.5%,
+    #f4ccff 50%,
+    #fdecff 62.5%,
+    #dc87ff 75%,
+    #8f57ff 87.5%,
+    #6838ff 100%
+  );
+  position: relative;
+  border-radius: 30px;
+  border: 5px solid #c0c0c0;
+}
+
+.titre {
+  position: relative;
+  width: fit-content;
+  top: 2vh;
+  margin: auto;
+  text-shadow: 0px 4px 10px #000000;
+  font-family: "Inter-ExtraBold Italic", Helvetica;
+  font-weight: 700;
+  font-style: normal;
+  color: #ffffff;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.line {
+  background-color: #ffffff;
+  height: 0.5vh;
+  width: 44vh;
+  margin-top: 3vh;
+  margin-left: 4vh;
+}
+
+.titre-prenom {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 25px;
+  margin-top: 3vh;
+  margin-left: 3vh;
+  color: #f9f9f9;
+  position: relative;
+}
+
+.prenom {
+  width: 17vh;
+  padding: 1vh;
+  position: relative;
+  margin-top: 0vh;
+  margin-left: 3vh;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+}
+
+.titre-nom {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 25px;
+  margin-top: -7.4vh;
+  margin-left: 26vh;
+  color: #f9f9f9;
+  position: relative;
+}
+
+.nom-de-famille {
+  width: 21vh;
+  padding: 1vh;
+  position: relative;
+  margin-top: 0vh;
+  margin-left: 26vh;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+}
+
+.titre-email {
+  color: #ffffff;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 25px;
+  position: relative;
+  margin-left: 3vh;
+  margin-top: 3vh;
+}
+
+.email {
+  width: 44vh;
+  padding: 1vh;
+  position: relative;
+  margin-top: 0vh;
+  margin-left: 3vh;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+}
+
+.titre-date {
+  color: #ffffff;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 25px;
+  position: relative;
+  margin-left: 3vh;
+  margin-top: 3vh;
+}
+
+.date {
+  position: relative;
+  margin-top: 0vh;
+  margin-left: 3vh;
+  width: 17vh;
+  padding: 1vh;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: #f9f9f9;
+}
+
+.titre-nom-utilisateur {
+  color: #ffffff;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 25px;
+  position: relative;
+  margin-left: 3vh;
+  margin-top: 3vh;
+}
+
+.nom-utilisateur {
+  width: 44vh;
+  padding: 1vh;
+  position: relative;
+  margin-top: 0vh;
+  margin-left: 3vh;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+}
+
+.titre-mot-de-passe {
+  color: #ffffff;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 25px;
+  position: relative;
+  margin-left: 3vh;
+  margin-top: 3vh;
+}
+
+.mot-de-passe {
+  width: 44vh;
+  padding: 1vh;
+  position: relative;
+  margin-top: 0vh;
+  margin-left: 3vh;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+}
+
+.titre-confirmation-mdp {
+  color: #ffffff;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 25px;
+  position: relative;
+  margin-left: 3vh;
+  margin-top: 3vh;
+}
+
+.confirmation {
+  width: 44vh;
+  padding: 10px;
+  position: relative;
+  margin-top: 0vh;
+  margin-left: 3vh;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+}
+
+.bouton-inscription {
+  width: 25vh;
+  height: 4vh;
+  margin-top: 4vh;
+  margin-left: 7vh;
+  background-color: #512aff;
+  position: relative;
+  border-radius: 30px;
+}
+
+.text-bouton-inscription {
+  position: relative;
+  top: 0.7vh;
+  margin-left: 0vh;
+  font-family: "Inter-ExtraBold Italic", Helvetica;
+  font-weight: lighter;
+  font-style: normal;
+  color: #6525c6;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.text-deja-inscrit {
+  position: relative;
+  font-style: italic;
+  color: #ffffff;
+  top: -2.5vh;
+  margin-left: 35vh;
+}
+
+.erreur {
+  color: red;
+  margin-left: 10vh;
+}
+@media screen and (max-width: 599.98px) and (orientation: portrait) {
+  .rectangle {
+    width: 52vh;
+    height: 80%;
+    top: 0%;
+    left: 0%;
+    background-image: linear-gradient(
+      180deg,
+      #8a4efe 0,
+      #ad68ff 12.5%,
+      #c781fe 25%,
+      #e3a9fe 37.5%,
+      #f4ccff 50%,
+      #fdecff 62.5%,
+      #dc87ff 75%,
+      #8f57ff 87.5%,
+      #6838ff 100%
+    );
+    position: relative;
+    border-radius: 30px;
+    border: 5px solid #c0c0c0;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 839.98px) and (orientation: portrait) {
+  .rectangle {
+    width: 52vh;
+    height: 80%;
+    top: 0%;
+    left: 0%;
+    background-image: linear-gradient(
+      180deg,
+      #8a4efe 0,
+      #ad68ff 12.5%,
+      #c781fe 25%,
+      #e3a9fe 37.5%,
+      #f4ccff 50%,
+      #fdecff 62.5%,
+      #dc87ff 75%,
+      #8f57ff 87.5%,
+      #6838ff 100%
+    );
+    position: relative;
+    border-radius: 30px;
+    border: 5px solid #c0c0c0;
+  }
+}
